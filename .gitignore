@@ -1,0 +1,4 @@
+config/solar-dashboard-a7541-firebase-adminsdk-fbsvc-d6b4cff18a.json
+node_modules/
+config/serviceAccountKey.json
+.env
