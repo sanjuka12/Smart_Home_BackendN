@@ -66,4 +66,9 @@ app.use("/", batteryroutes);
 app.use("/", batteryliveroutes);
 app.use("/users", userRoutes);
 
+
+app.get("/", (req, res) => {
+  res.send("✅ Smart Home Backend is running successfully!");
+});
+
 module.exports = app;
