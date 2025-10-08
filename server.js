@@ -9,7 +9,7 @@ const server = http.createServer(app);
 // Setup Socket.IO
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["http://localhost:3001", "https://smart-home-frontend-three.vercel.app"],
+    origin: ["http://localhost:3001", "https://smart-home-frontend-rouge.vercel.app/"],
     credentials: true,
   },
 });
@@ -30,11 +30,11 @@ io.on("connection", (socket) => {
   });
 });
 
-// Start server
-// server.listen(PORT, () => {
-//   console.log(`🚀 Server running on http://localhost:${PORT}`);
+// // Start server
+//  server.listen(PORT, () => {
+//    console.log(`🚀 Server running on http://localhost:${PORT}`);
 // });
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
-});
+ app.listen(PORT, "0.0.0.0", () => {
+   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
+ });
