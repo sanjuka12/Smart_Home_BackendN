@@ -9,7 +9,7 @@ const server = http.createServer(app);
 // Setup Socket.IO
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["http://localhost:3001", "https://smart-home-frontend-rouge.vercel.app/"],
+    origin: ["http://localhost:3001", "https://smart-home-frontend-cdpi3poon-sanjuka12s-projects.vercel.app"],
     credentials: true,
   },
 });
