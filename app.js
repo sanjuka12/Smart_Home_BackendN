@@ -16,7 +16,7 @@ const userRoutes = require('./routes/userRoutes');
 app.use(cors({
   origin: [
     "http://localhost:3001",
-    "https://smart-home-frontend-three.vercel.app"
+    "https://smart-home-frontend-rouge.vercel.app/"
   ],
   credentials: true
 }));
