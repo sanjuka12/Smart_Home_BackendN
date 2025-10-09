@@ -10,7 +10,8 @@ const io = require("socket.io")(server, {
   cors: {
     origin: [
       "http://localhost:3001",
-      "https://smart-home-frontend-cdpi3poon-sanjuka12s-projects.vercel.app"
+      "https://smart-home-frontend-cdpi3poon-sanjuka12s-projects.vercel.app",
+      "http://147.93.30.1:3001"
     ],
     credentials: true,
   },
