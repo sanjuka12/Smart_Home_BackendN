@@ -1,4 +1,3 @@
-// server.js
 const http = require("http");
 const app = require("./app");
 const PORT = process.env.PORT || 3000;
@@ -9,7 +8,11 @@ const server = http.createServer(app);
 // Setup Socket.IO
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["http://localhost:3001", "https://smart-home-frontend-three.vercel.app"],
+    origin: [
+      "http://localhost:3001",
+      "https://smart-home-frontend-cdpi3poon-sanjuka12s-projects.vercel.app",
+      "http://147.93.30.1:3001"
+    ],
     credentials: true,
   },
 });
@@ -30,7 +33,7 @@ io.on("connection", (socket) => {
   });
 });
 
-// Start server
-server.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+// Start the server (use the HTTP server, not app.listen)
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
 });

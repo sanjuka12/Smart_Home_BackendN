@@ -12,11 +12,14 @@ const inverterListRoutes = require('./routes/inverterListRoutes');
 const batteryroutes = require('./routes/batteryroutes');
 const batteryliveroutes = require('./routes/batteryliveroutes');
 const userRoutes = require('./routes/userRoutes');
+const maintenanceRoutes = require("./routes/Maintenanceroutes");
 
 app.use(cors({
   origin: [
     "http://localhost:3001",
-    "https://smart-home-frontend-three.vercel.app"
+    "https://smart-home-frontend-cdpi3poon-sanjuka12s-projects.vercel.app",
+    "http://147.93.30.1:3001"
+    
   ],
   credentials: true
 }));
@@ -65,5 +68,14 @@ app.use("/", inverterListRoutes);
 app.use("/", batteryroutes);
 app.use("/", batteryliveroutes);
 app.use("/users", userRoutes);
+app.use("/", maintenanceRoutes);
+
+
+require('./cleanup');
+
+
+app.get("/", (req, res) => {
+  res.send("✅ Smart Home Backend is running successfully!");
+});
 
 module.exports = app;
