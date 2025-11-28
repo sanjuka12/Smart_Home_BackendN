@@ -39,9 +39,21 @@ const deleteAllInverterData = async (req, res) => {
   }
 };
 
+const deleteOldestInverterData = async (req, res) => {
+  try {
+    const result = await deleteOldestBatteryData(5000);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("Error deleting oldest inverter data:", error);
+    res.status(500).json({ error: "Failed to delete oldest inverter data" });
+  }
+};
+
+
 
 module.exports = {
   saveInverterData,
   fetchInverterData,
-  deleteAllInverterData
+  deleteAllInverterData,
+  deleteOldestInverterData
 };

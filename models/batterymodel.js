@@ -37,5 +37,25 @@ const deleteAllInverterDataFromDB = async () => {
   return { deleted: snapshot.size };
 };
 
+const deleteOldestBatteryData = async (limit = 5000) => {
+  const snapshot = await db.collection("BatteryData")
+    .orderBy("timestamp", "asc")  // oldest first
+    .limit(limit)
+    .get();
 
-module.exports = { addInverterData, getAllInverterData, deleteAllInverterDataFromDB };
+  if (snapshot.empty) {
+    return { deleted: 0, message: "No documents to delete" };
+  }
+
+  const batch = db.batch();
+  snapshot.forEach(doc => {
+    batch.delete(doc.ref);
+  });
+
+  await batch.commit();
+
+  return { deleted: snapshot.size, message: `Deleted ${snapshot.size} oldest documents` };
+};
+
+
+module.exports = { addInverterData, getAllInverterData, deleteAllInverterDataFromDB, deleteOldestBatteryData };

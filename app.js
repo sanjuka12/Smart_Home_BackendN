@@ -12,6 +12,7 @@ const inverterListRoutes = require('./routes/inverterListRoutes');
 const batteryroutes = require('./routes/batteryroutes');
 const batteryliveroutes = require('./routes/batteryliveroutes');
 const userRoutes = require('./routes/userRoutes');
+const maintenanceRoutes = require("./routes/Maintenanceroutes");
 
 app.use(cors({
   origin: [
@@ -67,6 +68,10 @@ app.use("/", inverterListRoutes);
 app.use("/", batteryroutes);
 app.use("/", batteryliveroutes);
 app.use("/users", userRoutes);
+app.use("/", maintenanceRoutes);
+
+
+require('./cleanup');
 
 
 app.get("/", (req, res) => {
