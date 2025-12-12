@@ -43,11 +43,11 @@ const getTodayInverterData = async (UnitId) => {
   start.setHours(0, 0, 0, 0);
 
   const snapshot = await db.collection("InverterData")
-    .where("UnitId", "==", UnitId)
-    .where("timestamp", ">=", start)
-    .where("timestamp", "<=", now)
-    .orderBy("timestamp", "asc")
-    .get();
+  .where("UnitId", "==", UnitId)
+  .where("timestamp", ">=", start)
+  .where("timestamp", "<=", now)
+  .orderBy("timestamp", "asc")
+  .get();
 
   const result = [];
   snapshot.forEach(doc => result.push({ id: doc.id, ...doc.data() }));
