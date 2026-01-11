@@ -37,5 +37,22 @@ const deleteAllInverterDataFromDB = async () => {
   return { deleted: snapshot.size };
 };
 
+const getTodayInverterData = async (UnitId) => {
+  const now = new Date();
+  const start = new Date();
+  start.setHours(0, 0, 0, 0);
 
-module.exports = { addInverterData, getAllInverterData, deleteAllInverterDataFromDB};
+  const snapshot = await db.collection("InverterData")
+  .where("UnitId", "==", UnitId)
+  .where("timestamp", ">=", start)
+  .where("timestamp", "<=", now)
+  .orderBy("timestamp", "asc")
+  .get();
+
+  const result = [];
+  snapshot.forEach(doc => result.push({ id: doc.id, ...doc.data() }));
+  return result;
+};
+
+
+module.exports = { addInverterData, getAllInverterData, deleteAllInverterDataFromDB, getTodayInverterData};
